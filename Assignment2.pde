@@ -12,6 +12,43 @@ void setup()
   size(width, height);
   setUpPlayerControllers();
 }
+void keyPressed()
+{
+  keys[keyCode] = true;
+}
+
+void keyReleased()
+{
+  keys[keyCode] = false;
+}
+
+boolean checkKey(char theKey)
+{
+  return keys[Character.toUpperCase(theKey)];
+}
+
+char buttonNameToKey(XML xml, String buttonName)
+{
+  String value =  xml.getChild(buttonName).getContent();
+  if ("LEFT".equalsIgnoreCase(value))
+  {
+    return LEFT;
+  }
+  if ("RIGHT".equalsIgnoreCase(value))
+  {
+    return RIGHT;
+  }
+  if ("UP".equalsIgnoreCase(value))
+  {
+    return UP;
+  }
+  if ("DOWN".equalsIgnoreCase(value))
+  {
+    return DOWN;
+  }
+  //.. Others to follow
+  return value.charAt(0);
+}
 
 
 void setUpPlayerControllers()
