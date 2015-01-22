@@ -1,8 +1,6 @@
-//width and height
 static int width = 500;
 static int height = 500;
 static int timeDelay = 100;
-//delay of draw step
 
 ArrayList<Player> players = new ArrayList<Player>();
 boolean[] keys = new boolean[526];
