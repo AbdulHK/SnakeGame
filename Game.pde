@@ -29,6 +29,32 @@ class Game {
       butterfly[i+1] = (int)random(height);
     }
   }
+  void startGame(){
+    snakeGame.setIsStarted(true);
+  }
+
+  void setDirection(String direction) {
+
+    butterflyX = (int)random(100)>50 ? 1 : -1;
+    butterflyY = (int)random(100)>50 ? 1 : -1;
+
+    if (direction.equals("U") && !snakeGame.getDirection().equals("D"))
+    {
+      snakeGame.setDirection("U");
+    }
+    if (direction.equals("D") && !snakeGame.getDirection().equals("U"))
+    {
+      snakeGame.setDirection("D");
+    }
+    if (direction.equals("L") && !snakeGame.getDirection().equals("R"))
+    {
+      snakeGame.setDirection("L");
+    }
+    if (direction.equals("R") && !snakeGame.getDirection().equals("L"))
+    {
+      snakeGame.setDirection("R");
+    }
+  }
 }
  void drawBackground() {
 
