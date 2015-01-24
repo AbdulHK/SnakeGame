@@ -56,6 +56,31 @@ class Game {
     }
   }
 }
+ void display() {
+
+    
+    drawBackground();
+
+    delay(timeDelay);
+    counter++;
+
+    if (snakeGame != null ) {
+
+      
+      //if the game has not started yet - show menu
+      if (!snakeGame.isIsStarted()) {
+        showStartMenu();
+        return;
+      }
+
+      //move snake
+      snakeGame.nextStep(width, height);
+      //check if snake bites itself
+      if (snakeGame.SnakeOnSnake()) {
+        println("end");
+        snakeGame.setIsStarted(false);
+        counter = 0;
+      }
  void drawBackground() {
 
     if (dayToNight) {

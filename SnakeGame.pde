@@ -9,3 +9,16 @@ public class SnakeGame {
   private int radius = 10;
   private String direction;
   int score = 0;
+  
+  public SnakeGame(int count) 
+  {
+    score = 0;
+    snake = new ArrayList<SnakeClass>();
+     apples = new ArrayList<SnakeClass>();
+     applesTypes = new ArrayList<Integer>();
+    for (int i = 0; i<count; i++)
+    {
+      snake.add(new SnakeClass(100+radius*i, 100, radius));
+    }
+    direction = "R";
+  }

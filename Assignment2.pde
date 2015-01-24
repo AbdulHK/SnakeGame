@@ -44,7 +44,6 @@ char buttonNameToKey(XML xml, String buttonName)
   {
     return DOWN;
   }
-  //.. Others to follow
   return value.charAt(0);
 }
 
