@@ -40,3 +40,20 @@ public class SnakeGame {
    public void setDirection(String direction) {
     this.direction = direction;
   }
+   public boolean SnakeOnSnake()
+  {
+    int x = snake.get(snake.size()-1).getPositionX();
+    int y = snake.get(snake.size()-1).getPositionY();
+    
+    //for each snake element check coordinates
+    for (int i = 0; i<snake.size ()-1; i++)
+    {
+      if ((snake.get(i).getPositionX() == x) && (snake.get(i).getPositionY() == y))
+      {
+        return true;
+      }
+    }
+    return false;
+  }
+}
+

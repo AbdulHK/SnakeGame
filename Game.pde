@@ -81,6 +81,58 @@ class Game {
         snakeGame.setIsStarted(false);
         counter = 0;
       }
+      int radius = snakeGame.getSnake().get(snakeGame.getSnake().size()-1).getRadius();
+      int xs = snakeGame.getSnake().get(snakeGame.getSnake().size()-2).getPositionX()+radius/2;
+      int ys = snakeGame.getSnake().get(snakeGame.getSnake().size()-2).getPositionY()+radius/2;
+
+      fill(211, 222, 18);
+      stroke(211, 222, 18);
+      strokeWeight(4);
+      if (snakeGame.getDirection().equals("U")) {
+        line(xs, ys, xs, ys-radius*1.5);
+        line(xs, ys-radius*1.5, xs-5, ys-radius*2);
+        line(xs, ys-radius*1.5, xs+5, ys-radius*2);
+        fill(0);
+        stroke(0);
+        ellipse(xs-5, ys-radius, 5, 5);
+        ellipse(xs+5, ys-radius, 5, 5);
+        stroke(211, 222, 18);
+        fill(211, 222, 18);
+      }
+      if (snakeGame.getDirection().equals("D")) {
+        line(xs, ys, xs, ys+radius*1.5);
+        line(xs, ys+radius*1.5, xs-5, ys+radius*2);
+        line(xs, ys+radius*1.5, xs+5, ys+radius*2);
+        fill(0);
+        stroke(0);
+        ellipse(xs-5, ys+radius, 5, 5);
+        ellipse(xs+5, ys+radius, 5, 5);
+        stroke(211, 222, 18);
+        fill(211, 222, 18);
+      }
+      if (snakeGame.getDirection().equals("L")) {
+        line(xs, ys, xs-radius*1.5, ys);
+        line(xs-radius*1.5, ys, xs-radius*2, ys-5);
+        line(xs-radius*1.5, ys, xs-radius*2, ys+5);
+        fill(0);
+        stroke(0);
+        ellipse(xs-radius, ys-5, 5, 5);
+        ellipse(xs-radius, ys+5, 5, 5);
+        stroke(211, 222, 18);
+        fill(211, 222, 18);
+      }
+      if (snakeGame.getDirection().equals("R")) {
+        line(xs, ys, xs+radius*1.5, ys);
+        line(xs+radius*1.5, ys, xs+radius*2, ys-5);
+        line(xs+radius*1.5, ys, xs+radius*2, ys+5);
+        fill(0);
+        stroke(0);
+        ellipse(xs+radius, ys-5, 5, 5);
+        ellipse(xs+radius, ys+5, 5, 5);
+        stroke(211, 222, 18);
+        fill(211, 222, 18);
+      }
+
  void drawBackground() {
 
     if (dayToNight) {
