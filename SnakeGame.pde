@@ -22,3 +22,21 @@ public class SnakeGame {
     }
     direction = "R";
   }
+   public ArrayList<SnakeClass> getSnake() {
+    return snake;
+  }
+
+  public boolean isIsStarted() {
+    return isStarted;
+  }
+
+  public void setIsStarted(boolean isStarted) {
+    this.isStarted = isStarted;
+  }
+
+  public String getDirection() {
+    return direction;
+  }
+   public void setDirection(String direction) {
+    this.direction = direction;
+  }
