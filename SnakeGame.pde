@@ -68,7 +68,6 @@ public class SnakeGame {
       if(apples.size() >= 2)
         return; 
   
-      //with probability 00.01% remove any of apples
       if(random(100) > 99.99){
           int removeApple = (int)random(apples.size());
           apples.remove(removeApple);
@@ -77,9 +76,40 @@ public class SnakeGame {
    }
     
     while (true) {
-      //randomly create new apple position
       int xa = (int)(random(wight-100))+50;
       int ya = (int)(random(hight-100))+70;
+         
+      if (!SnakeOnApple())
+      {
+        apples.add(new SnakeClass(xa, ya, radius));
+        int type = 1;
+        float randomType = random(100);
+        if(randomType > 50){
+          
+            if(randomType > 75){
+              
+              if(randomType > 86){
+                
+                if(randomType > 96){
+                  type = 5;
+                }else{
+                  type = 4;
+                }
+              }else{
+                type = 3;
+              }    
+            }else{
+              type = 2;
+          }
+        }else{
+          type = 1;
+        }
+        applesTypes.add(type);
+        return;
+      }
+    }
+  }
+
          
    public boolean SnakeOnSnake()
   {
