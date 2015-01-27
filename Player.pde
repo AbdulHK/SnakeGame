@@ -17,6 +17,7 @@ class Player
   {
     pos = new PVector(width / 2, height / 2);
   }
+
   Player(int index, color colour, char up, char down, char left, char right, char start, char button1, char button2)
   {
     this();
@@ -88,3 +89,4 @@ class Player
     game.display();
   }
 }
+

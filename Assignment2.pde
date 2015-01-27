@@ -1,5 +1,7 @@
-static int width = 500;
-static int height = 500;
+
+
+static int width = 800;
+static int height = 600;
 static int timeDelay = 100;
 
 ArrayList<Player> players = new ArrayList<Player>();
@@ -10,6 +12,16 @@ void setup()
   size(width, height);
   setUpPlayerControllers();
 }
+
+void draw()
+{
+  for (Player player : players)
+  {
+    player.update();
+    player.display();
+  }
+}
+
 void keyPressed()
 {
   keys[keyCode] = true;
@@ -46,7 +58,6 @@ char buttonNameToKey(XML xml, String buttonName)
   }
   return value.charAt(0);
 }
-
 
 void setUpPlayerControllers()
 {

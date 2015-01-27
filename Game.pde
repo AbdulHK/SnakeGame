@@ -29,6 +29,7 @@ class Game {
       butterfly[i+1] = (int)random(height);
     }
   }
+
   void startGame(){
     snakeGame.setIsStarted(true);
   }
@@ -55,10 +56,9 @@ class Game {
       snakeGame.setDirection("R");
     }
   }
-}
- void display() {
 
-    
+  void display() {
+
     drawBackground();
 
     delay(timeDelay);
@@ -66,21 +66,22 @@ class Game {
 
     if (snakeGame != null ) {
 
-      
-      //if the game has not started yet - show menu
       if (!snakeGame.isIsStarted()) {
         showStartMenu();
         return;
       }
 
-      //move snake
       snakeGame.nextStep(width, height);
-      //check if snake bites itself
       if (snakeGame.SnakeOnSnake()) {
         println("end");
         snakeGame.setIsStarted(false);
         counter = 0;
       }
+      
+      snakeGame.createApple(width, height);
+
+      snakeGame.SnakeOnApple();
+
       int radius = snakeGame.getSnake().get(snakeGame.getSnake().size()-1).getRadius();
       int xs = snakeGame.getSnake().get(snakeGame.getSnake().size()-2).getPositionX()+radius/2;
       int ys = snakeGame.getSnake().get(snakeGame.getSnake().size()-2).getPositionY()+radius/2;
@@ -133,7 +134,92 @@ class Game {
         fill(211, 222, 18);
       }
 
- void drawBackground() {
+      int offset = counter % 2 == 0 ? 1 : -1;
+
+      for (int i = 0; i<snakeGame.getSnake ().size()-1; i++)
+      {
+        xs = snakeGame.getSnake().get(i).getPositionX();
+        ys = snakeGame.getSnake().get(i).getPositionY();
+        radius = snakeGame.getSnake().get(i).getRadius();
+        if (i % 2 == 0) {
+          fill(255, 0, 0);
+          if (snakeGame.getDirection().equals("U")) {
+            xs -= radius/4*offset;
+          }
+          if (snakeGame.getDirection().equals("D")) {
+            xs -= radius/4*offset;
+          }
+          if (snakeGame.getDirection().equals("L")) {
+            ys -= radius/4*offset;
+          }
+          if (snakeGame.getDirection().equals("R")) {
+            ys -= radius/4*offset;
+          }
+        } else {
+          fill(0);
+          if (snakeGame.getDirection().equals("U")) {
+            xs -= radius/4*(-offset);
+          }
+          if (snakeGame.getDirection().equals("D")) {
+            xs -= radius/4*(-offset);
+          }
+          if (snakeGame.getDirection().equals("L")) {
+            ys -= radius/4*(-offset);
+          }
+          if (snakeGame.getDirection().equals("R")) {
+            ys -= radius/4*(-offset);
+          }
+        }
+
+        rect(xs, ys, radius, radius);
+      }
+
+      if (snakeGame.apples != null && !snakeGame.apples.isEmpty())
+      {
+
+        for (int i = 0; i<snakeGame.apples.size (); i++) {
+                              
+          int xa = snakeGame.apples.get(i).getPositionX();
+          int ya = snakeGame.apples.get(i).getPositionY();
+          int aradius = snakeGame.apples.get(i).getRadius();
+
+          strokeWeight(1);
+
+          switch(snakeGame.applesTypes.get(i)) {
+          case 1:
+            fill(0, 255, 0);
+            stroke(0);
+            break;
+          case 2:
+            fill(202, 43, 230);
+            stroke(0);
+            break;
+          case 3:
+            fill(255, 0, 0);
+            stroke(0);
+            break;
+          case 4:
+            fill(0, 0, 255);
+            stroke(0);
+            break;
+          case 5:
+            fill(210, 210, 210);
+            stroke(0);
+            break;
+          }
+
+          
+          ellipse(xa, ya, aradius, aradius);
+        }
+      }
+
+      fill(255);
+
+      text("Current scores "+snakeGame.score, 10, 30);
+    }
+  }
+
+  void drawBackground() {
 
     if (dayToNight) {
       if (skyColor[0] == 0 && skyColor[1] > 0) {
@@ -174,7 +260,6 @@ class Game {
     fill(skyColor[0], skyColor[1], skyColor[2]);
     rect(0, 0, width, 70);  
 
-    
     for (int i = 0; i<width/40; i++ ) {
       int xpos = 40*i+20;
       int ypos = 40; 
@@ -197,7 +282,6 @@ class Game {
       ellipse(xpos, ypos-15, 25, 25);
     }
 
-   
     for (int i = 0; i<butterfly.length/2; i+=2) {
       butterfly[i] += butterflyX;
       butterfly[i+1] += butterflyY;
@@ -221,8 +305,9 @@ class Game {
     }
   }
 
- void showStartMenu() {
+  void showStartMenu() {
 
+    
     fill(255);
     text("Welcome to the Snake game !", 200, 100);
     text("Rules of the game are simple and known to all. Snake should eat apples and should not ", 20, 120);
