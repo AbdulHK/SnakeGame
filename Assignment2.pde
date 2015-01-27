@@ -1,11 +1,22 @@
+PrintWriter output;
 
-
-static int width = 800;
-static int height = 600;
+//screen width and height
+static int width = 500;
+static int height = 500;
+//speed of the game - delay time after each draw step
 static int timeDelay = 100;
+
 
 ArrayList<Player> players = new ArrayList<Player>();
 boolean[] keys = new boolean[526];
+
+void fileCopy(){  
+  File file = saveFile("scores.txt");
+  println(file);
+ 
+  File dest = new File(savePath("new.txt"), "scores.txt");
+  println(dest);
+} 
 
 void setup()
 {
@@ -56,6 +67,7 @@ char buttonNameToKey(XML xml, String buttonName)
   {
     return DOWN;
   }
+  //.. Others to follow
   return value.charAt(0);
 }
 
