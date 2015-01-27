@@ -38,7 +38,7 @@ class Game {
     }
   }
 
-  void startGame(){
+  void startGame() {
     snakeGame = new SnakeGame(15);
     snakeGame.setIsStarted(true);
     timeDelay=100;
@@ -50,7 +50,7 @@ class Game {
     //change direction of movement of the butterfly along the axis x and y to the other direction 
     butterflyX = (int)random(100)>50 ? 1 : -1;
     butterflyY = (int)random(100)>50 ? 1 : -1;
-  
+
     //check whether the snake can turn and change direction
     //for example a snake can not move down and immediately turn upward
     if (direction.equals("U") && !snakeGame.getDirection().equals("D"))
@@ -81,13 +81,19 @@ class Game {
 
     if (snakeGame != null ) {
 
-      
+
       //if the game has not started yet - show menu
       if (!snakeGame.isIsStarted()) {
         showStartMenu();
+
+
         return;
       }
-
+      if (snakeGame.isIsStarted()==true)
+      {                   
+       // playerCrash.play();
+        //playerCrash = minimCrash.loadFile("sound//Crash.wav");
+      }
       //move snake
       snakeGame.nextStep(width, height);
       //check if snake bites itself
@@ -101,7 +107,7 @@ class Game {
         snakeGame.setIsStarted(false);
         counter = 0;
       }
-      
+
       //create new apples
       snakeGame.createApple(width, height);
 
@@ -113,8 +119,8 @@ class Game {
       int xs = snakeGame.getSnake().get(snakeGame.getSnake().size()-2).getPositionX()+radius/2;
       int ys = snakeGame.getSnake().get(snakeGame.getSnake().size()-2).getPositionY()+radius/2;
 
-      //dependent on direction draw snake tongue and eyes  O_/
-      //                                                   O \
+      //dependent on direction draw snake tongue and eyes  
+                                
       fill(211, 222, 18);
       stroke(211, 222, 18);
       strokeWeight(4);
@@ -211,7 +217,7 @@ class Game {
       {
 
         for (int i = 0; i<snakeGame.apples.size (); i++) {
-                              
+
           int xa = snakeGame.apples.get(i).getPositionX();
           int ya = snakeGame.apples.get(i).getPositionY();
           int aradius = snakeGame.apples.get(i).getRadius();
@@ -241,7 +247,7 @@ class Game {
             break;
           }
 
-          
+
           ellipse(xa, ya, aradius, aradius);
         }
       }
@@ -249,7 +255,7 @@ class Game {
       fill(255);
 
       text("Current scores "+snakeGame.score, 10, 30);
-      text("current steps is "+counter,400,30);
+      text("current steps is "+counter, 400, 30);
     }
   }
 
@@ -354,7 +360,6 @@ class Game {
     text(" - blue   - reduced the speed x1.5 ", 20, 220);
     text(" - gray   - reduce the size of the snake doubled ", 20, 240);
     text(" Press start to play ", 20, 260);
-    
   }
 }
 

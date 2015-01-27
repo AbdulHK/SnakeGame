@@ -176,6 +176,9 @@ public class SnakeGame {
         if (Math.abs(snake.get(i).getPositionX() - apples.get(j).getPositionX()) < 15 && 
         Math.abs(snake.get(i).getPositionY() - apples.get(j).getPositionY()) < 15)
         {
+               player.play();
+               player = minim.loadFile("sound//shootsound.mp3");
+
           //if match - dependent on type change game settings
           switch(applesTypes.get(j)){
           case 1:

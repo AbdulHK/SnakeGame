@@ -1,5 +1,11 @@
 PrintWriter output;
+   import ddf.minim.*;    //import library for sounds
 
+    Minim minim;  //sounds objects
+  AudioPlayer player;
+  
+  Minim minimCrash;
+  AudioPlayer playerCrash;
 //screen width and height
 static int width = 500;
 static int height = 500;
@@ -9,6 +15,7 @@ static int timeDelay = 100;
 
 ArrayList<Player> players = new ArrayList<Player>();
 boolean[] keys = new boolean[526];
+
 
 void fileCopy(){  
   File file = saveFile("scores.txt");
@@ -22,6 +29,10 @@ void setup()
 {
   size(width, height);
   setUpPlayerControllers();
+  minim = new Minim(this);    //load sound for shoot
+  player = minim.loadFile("sound//shootsound.mp3");
+  minimCrash = new Minim(this);    //load sound to collide spaceship with Meteor
+  playerCrash = minimCrash.loadFile("sound//Crash.wav");
 }
 
 void draw()
