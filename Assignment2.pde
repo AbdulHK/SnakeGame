@@ -1,14 +1,12 @@
 PrintWriter output;
-   import ddf.minim.*;    //import library for sounds
-
-    Minim minim;  //sounds objects
+  import ddf.minim.*;    //import library for sounds
+  Minim minim;  //sounds objects
   AudioPlayer player;
-  
   Minim minimCrash;
   AudioPlayer playerCrash;
 //screen width and height
-static int width = 500;
-static int height = 500;
+static int width = 1280;
+static int height = 1024;
 //speed of the game - delay time after each draw step
 static int timeDelay = 100;
 int stage=0;
@@ -17,8 +15,9 @@ int stage=0;
 ArrayList<Player> players = new ArrayList<Player>();
 boolean[] keys = new boolean[526];
 
-
-void fileCopy(){  
+//scores file
+void fileCopy()
+{  
   File file = saveFile("scores.txt");
   println(file);
  
@@ -38,7 +37,7 @@ void setup()
 }
 
 void draw()
-{
+{//menu to view scores and start menu
   if(stage==0)
   {
     fill(221);
@@ -120,7 +119,9 @@ void setUpPlayerControllers()
   p.pos.y = 300;
   players.add(p);
 }
- void showStartMenu() {
+//menu functions
+ void showStartMenu()
+ {
 
     fill(255);
     text("Welcome to the Snake game !", 200, 100);
@@ -133,21 +134,23 @@ void setUpPlayerControllers()
     text(" - gray   - reduce the size of the snake doubled ", 20, 240);
     text(" Press start to play ", 20, 260);
   }
+  //scores function
   void showscore()
   {
     background(0);
   String[] lines = loadStrings("data/scores.txt");
+  //error checking if no data in the file
   if (lines.length==0)
   {
     text("there is no scores",20,210);
   }
   else
   {
-  for(int i=0;i<lines.length;i++)
-  {
-  text("Your score is: " + lines[i],20,210);
-  break;
-  }
+      for(int i=0;i<lines.length;i++)
+      {
+      text("Your score is: " + lines[i],20,210);
+      break;
+      }
   }
    text("press P to start the game",20,220);
     

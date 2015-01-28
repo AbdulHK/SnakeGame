@@ -1,4 +1,5 @@
-public class SnakeClass {
+public class SnakeClass
+{
   
 int positionX;
      int positionY;
@@ -13,7 +14,8 @@ int positionX;
      //radius size of snake element
      //color color of snale element
      
-    public SnakeClass(int positionX, int positionY, int radius) {
+    public SnakeClass(int positionX, int positionY, int radius)
+    {
         this.positionX = positionX;
         this.positionY = positionY;
         this.radius = radius;
@@ -23,11 +25,13 @@ int positionX;
         return appleTime;
     }
 
-    public void setAppleTime(long appleTime) {
+    public void setAppleTime(long appleTime)
+    {
         this.appleTime = appleTime;
     }
 
-    public void setCurrentTime(long currentTime) {
+    public void setCurrentTime(long currentTime) 
+    {
         this.currentTime = currentTime;
     }
 

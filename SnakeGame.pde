@@ -1,4 +1,5 @@
-public class SnakeGame {
+public class SnakeGame 
+{
   private boolean isStarted = false;
   //snake body
   private ArrayList<SnakeClass> snake;
@@ -34,28 +35,34 @@ public class SnakeGame {
   }
 
 
-  public ArrayList<SnakeClass> getSnake() {
+  public ArrayList<SnakeClass> getSnake()
+  {
     return snake;
   }
 
-  public boolean isIsStarted() {
+  public boolean isIsStarted() 
+  {
     return isStarted;
   }
 
-  public void setIsStarted(boolean isStarted) {
+  public void setIsStarted(boolean isStarted) 
+  {
     this.isStarted = isStarted;
   }
 
-  public String getDirection() {
+  public String getDirection() 
+  {
     return direction;
   }
 
-  public void setDirection(String direction) {
+  public void setDirection(String direction) 
+  {
     this.direction = direction;
   }
 
-  public void checkApplesTime() {
-    
+  public void checkApplesTime()
+  {
+    //checks appletime
   }
 
   
@@ -70,27 +77,35 @@ public class SnakeGame {
     int y = temp.getPositionY();
     //dependent on direction create new snake head with next coordinates, and remove 
     //tail element
-    if (direction.equals("U")) {
+    if (direction.equals("U")) 
+    {
       y -= radius;
     }
-    if (direction.equals("D")) {
+    if (direction.equals("D")) 
+    {
       y += radius;
     }
-    if (direction.equals("L")) {
+    if (direction.equals("L"))
+    {
       x -= radius;
     }
-    if (direction.equals("R")) {
+    if (direction.equals("R"))
+    {
       x += radius;
-    }if (x < 0) {
+    }if (x < 0) 
+    {
             x = width; 
           }
-        if (x > width) {
+        if (x > width)
+        {
             x = 0; 
         }
-        if (y < 70) {
+        if (y < 70) 
+        {
           y = height; 
         }
-        if (y > height) {
+        if (y > height)
+        {
           y = 74; 
         }
     snake.add(new SnakeClass(x, y, temp.getRadius()));
@@ -105,19 +120,22 @@ public class SnakeGame {
    
   public void createApple(int wight, int hight)
   {
-    if(!apples.isEmpty()){
+    if(!apples.isEmpty())
+    {
       if(apples.size() >= 2)
         return; 
   
       //with probability 00.01% remove any of apples
-      if(random(100) > 99.99){
+      if(random(100) > 99.99)
+      {
           int removeApple = (int)random(apples.size());
           apples.remove(removeApple);
           applesTypes.remove(removeApple);
       }
    }
     
-    while (true) {
+    while (true) 
+    {
       //randomly create new apple position
       int xa = (int)(random(wight-100))+50;
       int ya = (int)(random(hight-100))+70;
@@ -129,25 +147,36 @@ public class SnakeGame {
         //generate apple type
         float randomType = random(100);
         //with probability 50% will be created green apple
-        if(randomType > 50){
+        if(randomType > 50)
+        {
           //else with probability 25% will be created violet apple
-            if(randomType > 75){
+            if(randomType > 75)
+            {
               //else with probability 11% will be created red apple
-              if(randomType > 86){
+              if(randomType > 86)
+              {
                 //else with probability 10% will be created blue apple
-                if(randomType > 96){
+                if(randomType > 96)
+                {
                   //else with probability 4% will be created white apple
                   type = 5;
-                }else{
+                }else
+                {
                   type = 4;
                 }
-              }else{
+              }
+              else
+              {
                 type = 3;
               }    
-            }else{
+            }
+            else
+            {
               type = 2;
           }
-        }else{
+        }
+        else
+        {
           type = 1;
         }
         applesTypes.add(type);
@@ -162,13 +191,15 @@ public class SnakeGame {
    
   public boolean SnakeOnApple()
   {
-    if (apples == null || apples.isEmpty()) {
+    if (apples == null || apples.isEmpty()) 
+    {
       return false;
     }
     
     
     //for each apple and snake body element
-    for(int j = 0; j < apples.size(); j++){
+    for(int j = 0; j < apples.size(); j++)
+    {
     
       for (int i = 0; i<snake.size (); i++)
       {
@@ -180,7 +211,8 @@ public class SnakeGame {
                player = minim.loadFile("sound//shootsound.mp3");
 
           //if match - dependent on type change game settings
-          switch(applesTypes.get(j)){
+          switch(applesTypes.get(j))
+          {
           case 1:
           //green apple - add 10 points, and 3 length points
             score += 10;
@@ -224,33 +256,42 @@ public class SnakeGame {
    
   public void increaseSnake(int wight, int hight)
   {
-    for (int i = 0; i<X; i++) {
+    for (int i = 0; i<X; i++) 
+    {
       //dependent on direction add elements to snake head
       SnakeClass temp = snake.get(snake.size()-1);
       int x = temp.getPositionX();
       int y = temp.getPositionY();
-      if (direction.equals("U")) {
+      if (direction.equals("U"))
+      {
         y -= radius;
       }
-      if (direction.equals("D")) {
+      if (direction.equals("D")) 
+      {
         y += radius;
       }
-      if (direction.equals("L")) {
+      if (direction.equals("L"))
+      {
         x -= radius;
       }
-      if (direction.equals("R")) {
+      if (direction.equals("R"))
+      {
         x += radius;
       }
-      if (x>wight) {
+      if (x>wight)
+      {
         x -= wight;
       }
-      if (x<0) {
+      if (x<0)
+      {
         x += wight;
       }
-      if (y>hight) {
+      if (y>hight) 
+      {
         y -= hight-70;
       }
-      if (y<70) {
+      if (y<70) 
+      {
         y += hight-70;
       }
       snake.add(new SnakeClass(x, y, temp.getRadius()));
