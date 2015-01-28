@@ -41,7 +41,7 @@ class Game {
   void startGame() {
    
     snakeGame = new SnakeGame(15);
-    //snakeGame.setIsStarted(true);
+    snakeGame.setIsStarted(true);
     timeDelay=100;
   }
 
@@ -254,7 +254,7 @@ class Game {
       fill(255);
 
       text("Current scores "+snakeGame.score, 10, 30);
-      text("current steps is "+counter, 400, 30);
+     // text("current steps is "+counter, 400, 30);
     }
   }
 
@@ -347,18 +347,6 @@ class Game {
     }
   }
 
-  void showStartMenu() {
-
-    fill(255);
-    text("Welcome to the Snake game !", 200, 100);
-    text("Rules of the game are simple and known to all. Snake should eat apples and should not ", 20, 120);
-    text("bite itself. The game has several types of apples : ", 20, 140);
-    text(" - green  - add 10 points to scroe, and 3 to snake length ", 20, 160);
-    text(" - purple - add 5 points to scroe ", 20, 180);
-    text(" - red    - increase the speed x2 ", 20, 200);
-    text(" - blue   - reduced the speed x1.5 ", 20, 220);
-    text(" - gray   - reduce the size of the snake doubled ", 20, 240);
-    text(" Press start to play ", 20, 260);
-  }
+ 
 }
 
