@@ -39,13 +39,14 @@ class Game {
   }
 
   void startGame() {
+   
     snakeGame = new SnakeGame(15);
-    snakeGame.setIsStarted(true);
+    //snakeGame.setIsStarted(true);
     timeDelay=100;
   }
 
   void setDirection(String direction) {
-
+  
     //with probability 50%, 
     //change direction of movement of the butterfly along the axis x and y to the other direction 
     butterflyX = (int)random(100)>50 ? 1 : -1;
@@ -85,8 +86,6 @@ class Game {
       //if the game has not started yet - show menu
       if (!snakeGame.isIsStarted()) {
         showStartMenu();
-
-
         return;
       }
       if (snakeGame.isIsStarted()==true)
